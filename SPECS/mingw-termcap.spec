@@ -12,10 +12,10 @@
 
 Name:           mingw-termcap
 Version:        1.3.1
-Release:        30%{?dist}
+Release:        31%{?dist}
 Summary:        MinGW terminal feature database
 
-License:        GPLv2+
+License:        GPL-2.0-or-later
 URL:            ftp://ftp.gnu.org/gnu/termcap/
 Source0:        ftp://ftp.gnu.org/gnu/termcap/termcap-%{version}.tar.gz
 
@@ -170,6 +170,10 @@ mv $RPM_BUILD_ROOT%{mingw64_prefix}/info/* $RPM_BUILD_ROOT%{mingw64_infodir}
 
 
 %changelog
+* Mon Aug 7 2023 Konstantin Kostiuk <kkostiuk@redhat.com> - 1.3.1-31
+- Update license to SPDX format
+- Resolves: RHEL-1059
+
 * Mon Aug 09 2021 Mohan Boddu <mboddu@redhat.com> - 1.3.1-30
 - Rebuilt for IMA sigs, glibc 2.34, aarch64 flags
   Related: rhbz#1991688
