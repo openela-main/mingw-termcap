@@ -12,7 +12,7 @@
 
 Name:           mingw-termcap
 Version:        1.3.1
-Release:        39%{?dist}
+Release:        40%{?dist}
 Summary:        MinGW terminal feature database
 
 License:        GPL-2.0-or-later
@@ -102,7 +102,7 @@ autoconf
 
 %build
 %mingw_configure
-%mingw_make %{?_smp_mflags}
+%mingw_make %{?_smp_mflags} CFLAGS="$CFLAGS -std=gnu89"
 
 # Build a shared library.  No need for -fPIC on Windows.
 pushd build_win32
@@ -173,6 +173,10 @@ mv $RPM_BUILD_ROOT%{mingw64_prefix}/info/* $RPM_BUILD_ROOT%{mingw64_infodir}
 
 
 %changelog
+* Wed Feb 11 2026 Elizabeth Ashurov <eashurov@redhat.com> - 1.3.1-40
+- Apply -std=gnu89 to fix build with GCC 15 (C23 default)
+- Resolves: RHEL-129226
+
 * Tue Oct 29 2024 Troy Dawson <tdawson@redhat.com> - 1.3.1-39
 - Bump release for October 2024 mass rebuild:
   Resolves: RHEL-64018
